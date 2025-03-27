@@ -7,6 +7,5 @@
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int StoreID { get; set; }
-        public int CompanyID { get; set; }
     }
 }

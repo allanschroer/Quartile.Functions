@@ -1,6 +1,4 @@
 using Dapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Data.SqlClient;
@@ -70,7 +68,7 @@ namespace Quartile.Functions
 
                 using (var connection = new SqlConnection(_connectionString))
                 {
-                    var query = "EXEC InsertProduct @ProductName, @Description, @Price, @CompanyId, @StoreId";
+                    var query = "EXEC InsertProduct @ProductName, @Description, @Price, @StoreId";
 
                     var productId = await connection.ExecuteScalarAsync<int>(query, product);
                     _logger.LogInformation("Product created with ID: {productId}", productId);
@@ -127,7 +125,6 @@ namespace Quartile.Functions
                         SET ProductName = @ProductName,
                             Description = @Description,
                             Price = @Price,
-                            CompanyID = @CompanyID,
                             StoreID = @StoreID,
                             ModifiedDate = GETDATE()
                         WHERE Id = @Id;";
