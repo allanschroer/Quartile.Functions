@@ -21,7 +21,7 @@ namespace Quartile.Functions
         }
 
         [Function("GetProducts")]
-        public async Task<HttpResponseData> GetProducts([HttpTrigger(AuthorizationLevel.Function, "get", Route = "products")] HttpRequestData req)
+        public async Task<HttpResponseData> GetProducts([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "products")] HttpRequestData req)
         {
             _logger.LogInformation("HTTP trigger function GetProducts processed a request.");
 
@@ -49,7 +49,7 @@ namespace Quartile.Functions
         }
 
         [Function("CreateProduct")]
-        public async Task<HttpResponseData> CreateProduct([HttpTrigger(AuthorizationLevel.Function, "post", Route = "products")] HttpRequestData req)
+        public async Task<HttpResponseData> CreateProduct([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "products")] HttpRequestData req)
         {
             _logger.LogInformation("HTTP trigger function CreateProduct processed a request.");
 
@@ -88,7 +88,7 @@ namespace Quartile.Functions
         }
 
         [Function("UpdateProduct")]
-        public async Task<HttpResponseData> UpdateProduct([HttpTrigger(AuthorizationLevel.Function, "put", Route = "products/{id:int}")] HttpRequestData req, int id)
+        public async Task<HttpResponseData> UpdateProduct([HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "products/{id:int}")] HttpRequestData req, int id)
         {
             _logger.LogInformation("C# HTTP trigger function UpdateProduct processed a request for ID: {id}", id);
 
@@ -147,7 +147,7 @@ namespace Quartile.Functions
         }
 
         [Function("DeleteProduct")]
-        public async Task<HttpResponseData> DeleteProduct([HttpTrigger(AuthorizationLevel.Function, "delete", Route = "products/{id:int}")] HttpRequestData req, int id)
+        public async Task<HttpResponseData> DeleteProduct([HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "products/{id:int}")] HttpRequestData req, int id)
         {
             _logger.LogInformation("HTTP trigger function DeleteProduct processed a request for ID: {id}", id);
 
